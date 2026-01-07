@@ -14,9 +14,9 @@ enabled = true
 directory = "./dist/client"
 not_found_handling = "single-page-application"
 
-[[routes]]
-pattern = "<< YOUR_SUBDOMAIN >>.3kit.ai"
-custom_domain = true
+# [[routes]]
+# pattern = "<< YOUR_SUBDOMAIN >>.3kit.ai"
+# custom_domain = true
 
 # Smart Placement
 # https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
@@ -34,6 +34,31 @@ custom_domain = true
 # https://developers.cloudflare.com/workers/configuration/secrets/
 # [vars]
 # MY_VARIABLE = "production_value"
+
+# Google Cloud Vision API Configuration
+# To set up:
+# 1. Create a Google Cloud Project at https://console.cloud.google.com/
+# 2. Enable the Cloud Vision API
+# 3. Create a service account with "Cloud Vision API User" role
+# 4. Download the service account JSON key
+# 5. Store credentials as a secret (do NOT commit the JSON key to git):
+#    wrangler secret put GOOGLE_CREDENTIALS
+#    Then paste the entire JSON content when prompted
+#
+# Required secrets:
+# - GOOGLE_CREDENTIALS: Full JSON content of service account key file
+
+# Gemini Nano Banana (Image Generation) Configuration
+# To set up:
+# 1. Visit https://aistudio.google.com/apikey
+# 2. Sign in with your Google account
+# 3. Click "Create API Key" and copy it
+# 4. Store the API key as a secret:
+#    wrangler secret put GEMINI_API_KEY
+#    Then paste the API key when prompted
+#
+# Required secrets:
+# - GEMINI_API_KEY: Your Gemini API key for image generation
 
 # Service Bindings (communicate between multiple Workers)
 # https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
